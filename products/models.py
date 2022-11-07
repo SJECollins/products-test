@@ -38,7 +38,7 @@ class Sauce(BaseProduct):
 
 class SeedBox(BaseProduct):
     seeds = models.ManyToManyField(Seed)
-    price = models.ManyToManyField(ProductSizes)
+    sizes = models.ManyToManyField(ProductSizes)
 
     class Meta:
         verbose_name_plural = 'Seed Boxes'
@@ -46,7 +46,7 @@ class SeedBox(BaseProduct):
 
 class SauceBox(BaseProduct):
     sauces = models.ManyToManyField(Sauce)
-    price = models.ManyToManyField(ProductSizes)
+    sizes = models.ManyToManyField(ProductSizes)
 
     class Meta:
         verbose_name_plural = 'Sauce Boxes'

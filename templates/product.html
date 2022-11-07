@@ -21,7 +21,7 @@
                     {% if product.sizes %}
                     <tr>
                         <th>Options: </th>
-                        <td>{% for size in product.sizes.all %}<span>{{ product.sizes }} </span>{% endfor %}</td>
+                        <td>{% for size in product.sizes.all %}<span>{{ size }} {{ size.price}} </span>{% endfor %}</td>
                     </tr>
                     {% endif %}
                     <tr>
@@ -51,7 +51,7 @@
                     <tr>
                         {% if product.seeds %}
                         <th>Seeds: </th>
-                        <td>{% for seed in product.seeds.all %}<span>{{ product.seeds }} </span>{% endfor %}</td>
+                        <td>{% for seed in product.seeds.all %}<span>{{ seed }} </span>{% endfor %}</td>
                         {% endif %}
                     </tr>
                     <tr>

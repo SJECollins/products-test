@@ -4,10 +4,16 @@ from django.views import View, generic
 from .models import BaseProduct, Seed, Sauce, SeedBox, SauceBox
 
 
-class ProductsList(generic.ListView):
-    model = BaseProduct
-    queryset = BaseProduct.objects.all()
-    template_name = 'index.html'
+class ProductsView(View):
+    def get(self, request):
+        seeds = Seed.objects.all()
+        seedboxes = SeedBox.objects.all()
+        template_name = 'index.html'
+        context = {
+            'seeds': seeds,
+            'seedboxes': seedboxes,
+        }
+        return render(request, template_name, context)
 
 
 class SeedBoxView(View):

@@ -2,20 +2,40 @@
 
 
 {% block content %}
-<div class="col-12">
-    <div class="d-flex align-items-center">
-        <h2 class="me-5">Seedboxes</h2>
-    </div>
-    {% for seedbox in seedboxlist %}
-    <div class="col-md-3">
-        <div class="text-center">
-            <h4>{{ seedbox.name }}</h4>
-            <p>{{ seedbox.excerpt }}</p>
-            <a href="{% url 'products:seedbox' seedbox.slug %}">View {{ seedbox.name }}</a>
+<section class="container-fluid">
+    <h1>All Products</h1>
+    
+    <div class="row mb-5">
+        <div class="d-flex align-items-center">
+            <h2 class="me-5">Seeds</h2>
         </div>
+        {% for seed in seeds %}
+        <div class="col-md-3">
+            <div class="chilli-card text-center">
+                <h4>{{ seed.name }}</h4>
+                <p>{{ seed.excerpt }}</p>
+                <a href="#">View {{ seed.name }}</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No seeds</p>
+        {% endfor %}
     </div>
-    {% empty %}
-    <p>No seeds</p>
-    {% endfor %}
-</div>
+    <div class="row mb-5">
+        <div class="d-flex align-items-center">
+            <h2 class="me-5" >Seedboxes</h2>
+        </div>
+            {% for seedbox in seedboxes %}
+        <div class="col-3">
+            <div class="chilli-card text-center">
+                <h4>{{ seedbox.name }}</h4>
+                <p>{{ seedbox.excerpt }}</p>
+                <a href="{% url 'products:seedbox' seedbox.slug %}">View {{ seedbox.name }}</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No seedboxes</p>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}
