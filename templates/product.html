@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row m-4">
+        <div>
+            <h1>{{ product.name }}</h1>
+            <p>{{ product.category }}</p> <!-- Maybe a link to the category?? -->
+        </div>
+        <div class="col-md-6">
+            <p>{{ product.description }}</p>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <table>
+                    <tr>
+                        <th>Price: </th>
+                        <td>€{{ product.price }}</td>
+                    </tr>
+                    {% if product.sizes %}
+                    <tr>
+                        <th>Options: </th>
+                        <td>{% for size in product.sizes.all %}<span>{{ product.sizes }} </span>{% endfor %}</td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        {% if product.time_to_maturity %}
+                        <th>Growth time to maturity: </th>
+                        <td>{{ product.time_to_maturity }}</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        {% if product.flavour %}
+                        <th>Flavour: </th>
+                        <td>{{ product.flavour }}</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        {% if product.ingredients %}
+                        <th>Ingredients: </th>
+                        <td>{{ product.ingredients }}</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        {% if product.heat_level %}
+                        <th>Heat level: </th>
+                        <td>{{ product.heat_level }}</td> <!-- Could it be a number if chillis??? -->
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        {% if product.seeds %}
+                        <th>Seeds: </th>
+                        <td>{% for seed in product.seeds.all %}<span>{{ product.seeds }} </span>{% endfor %}</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        {% if product.sauces %}
+                        <th>Sauces: </th>
+                        <td>{{ product.sauces }}</td>
+                        {% endif %}
+                    </tr>
+                </table>
+                {% if product.in_stock %}
+                <!-- ??? should user be able to be notified if comes into stock?? -->
+                <p>In stock.</p>
+                {% else %}
+                <p>Out of stock.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

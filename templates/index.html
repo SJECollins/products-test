@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="col-12">
+    <div class="d-flex align-items-center">
+        <h2 class="me-5">Seedboxes</h2>
+    </div>
+    {% for seedbox in seedboxlist %}
+    <div class="col-md-3">
+        <div class="text-center">
+            <h4>{{ seedbox.name }}</h4>
+            <p>{{ seedbox.excerpt }}</p>
+            <a href="{% url 'products:seedbox' seedbox.slug %}">View {{ seedbox.name }}</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>No seeds</p>
+    {% endfor %}
+</div>
+{% endblock %}
