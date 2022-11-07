@@ -21,7 +21,7 @@
                     {% if product.sizes %}
                     <tr>
                         <th>Options: </th>
-                        <td>{% for size in product.sizes.all %}<span>{{ size }} {{ size.price}} </span>{% endfor %}</td>
+                        <td>{% for size in product.sizes.all %}<p>{{ size }} {{ size.price}} </p>{% endfor %}</td>
                     </tr>
                     {% endif %}
                     <tr>
